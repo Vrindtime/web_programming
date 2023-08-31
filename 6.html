@@ -1,0 +1,86 @@
+<head>
+    <title>JS Calculator</title>
+    <style>
+        body {
+            background: #f5f5f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        input,
+        select {
+            padding: 10px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+
+        input[type="submit"] {
+            background-color: black;
+            color: white;
+            margin-left: 10%;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <form name="form">
+        <h1>Enter the First number: </h1>
+        <input type="text" name="num1" id="num1">
+        <h1>Enter the Second number: </h1>
+        <input type="text" name="num2" id="num2">
+        <h1>Choose the operator:</h1>
+        <select name="dropdown" id="operator">
+            <option value="add" selected>Add: '+'</option>
+            <option value="subtract" selected>subtract: '-'</option>
+            <option value="multiply" selected>multiply: '*'</option>
+            <option value="divide" selected>divide: '/'</option>
+        </select>
+        <input type="submit" onclick="calculate()">
+    </form>
+    <script>
+        function calculate() {
+            // Get the values of the input fields
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value);
+            var operator = document.getElementById("operator").value;
+            // Perform the calculation based on the selected operator
+            var result;
+            switch (operator) {
+                case "add":
+                    result = num1 + num2;
+                    break;
+                case "subtract":
+                    result = num1 - num2;
+                    break;
+                case "multiply":
+                    result = num1 * num2;
+                    break;
+                case "divide":
+                    result = num1 / num2;
+                    break;
+                default:
+                    result = "Invalid operator";
+            }
+            window.alert("result: " + result);
+        }
+    </script>
+</body>
+
+</html>

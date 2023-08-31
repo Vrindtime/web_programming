@@ -1,0 +1,181 @@
+<html lang="en">
+
+<head>
+    <title>Employee Registeration Form</title>
+    <style>
+        :root {
+            background: #d5d5d5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+        }
+
+        #form {
+            padding: 2%;
+            width: 400px;
+            margin: 20vh auto;
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 2px 5px 15px black,
+                        -2px -5px 15px #f5f5f5;
+            border: 1px solid black;
+        }
+        input{
+            padding: 0% 2%;
+        }
+
+        .input {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .no{
+            border: none !important;
+            padding: 2%;
+        }
+
+        .input label {
+            text-align: start;
+            font-size: 20px;
+        }
+
+        .input input {
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 7px;
+            margin-bottom: 10px;
+        }
+        .pos{
+            padding: 1.5% 5%;
+        }
+        button {
+            border: none;
+            padding: 2%;
+            font-size: 20px;
+            color: white;
+            background-color: #2f2f2f;
+            border-radius: 10px;
+        }
+
+        button:hover {
+            background-color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <form id="form" action="/" onsubmit="return freg()">
+        <h1><u>EMPLOYEE REGISTER</u></h1>
+        <div class="input">
+            <label for="name">UserName:</label>
+            <input type="text" id="name" placeholder="Enter Your UserName">
+        </div>
+        <div class="input">
+            <label for="Email">Email:</label>
+            <input type="text" id="Email" placeholder="Enter Your Email">
+        </div>
+        <div class="input">
+            <label for="ph">PhoneNumber:</label>
+            <input type="text"id="ph" placeholder="Enter Your PhoneNumber">
+        </div>
+        <div class="input">
+            <label for="pos">Position:</label>
+            <select id="pos" class="pos">
+                <option value="Tutor">Tutor</option>
+                <option value="Instructional coordinator">Instructional coordinator</option>
+                <option value="Accountant">Accountant</option>
+                <option value="HR">Human Resource</option>
+            </select>
+        </div>
+        <div class="input">
+            <label for="DOB">DOB:</label>
+            <input type="date" id="DOB" placeholder="Enter Your UserName">
+        </div>
+        <div class="input">
+            <label for="cv">CV file:</label>
+            <input type="file" id="cv" class="no" placeholder="Enter Your UserName">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <script>
+        const form = document.getElementById("form");
+        const name = document.getElementById("name");
+        const Email = document.getElementById("Email");
+        const ph = document.getElementById("ph");
+        const pos = document.getElementById("pos");
+        const DOB = document.getElementById("DOB");
+        const CV = document.getElementById("CV");
+        //to allow only pdf and word doc
+        const allowedFormats = ["pdf", "doc", "docx"];
+        const fileFormat = CV.value.split(".").pop().toLowerCase();
+        function freg() {
+            if (name.value.trim() == '') {
+                window.alert("Please Enter your name");
+                name.focus();
+                return false;
+            }
+            if (Email.value.trim() == '') {
+                window.alert("Please Enter your email");
+                Email.focus();
+                return false;
+            }
+            if (Email.value.indexOf("@", 1) < 0) {
+                window.alert("Please Enter a valid email address");
+                Email.focus();
+                return false;
+            }
+            if (Email.value.indexOf(".", 4) < 0) {
+                window.alert("Please Enter a valid email address");
+                Email.focus();
+                return false;
+            }
+            if (ph.value.trim() == '') {
+                window.alert("Please Enter your phone number");
+                ph.focus();
+                return false;
+            }
+            if (ph.value.trim().length != 10) {
+                window.alert("Please Enter a 10 digit phone number");
+                ph.focus();
+                return false;
+            }
+            if (pos.value.trim() == '') {
+                window.alert("Please Enter your position");
+                pos.focus();
+                return false;
+            }
+            if (!/^[a-zA-Z]+$/.test(pos.value.trim())) {
+                window.alert("Please enter a valid position (letters only no space)");
+                pos.focus();
+                return false;
+            }
+            if (DOB.value.trim() == '') {
+                window.alert("Please Enter your date of birth");
+                DOB.focus();
+                return false;
+            }
+            //to find age(above 18)
+            const today = new Date();
+            const birthDate = new Date(DOB.value);
+            const age = today.getFullYear() - birthDate.getFullYear();
+            const month = today.getMonth() - birthDate.getMonth();
+            if (age < 18 || (age === 18 && month < 0)) {
+                window.alert("You must be at least 18 years old to register.");
+                DOB.focus();
+                return false;
+            }
+            if (CV.files.length == 0) {
+                window.alert("Please select your CV file");
+                CV.focus();
+                return false;
+            }
+            if (!allowedFormats.includes(fileFormat)) {
+                window.alert("CV must be in PDF or Word format.");
+                CV.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+
+</html>

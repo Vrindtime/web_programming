@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TEST</title>
+</head>
+
+<body>
+    <div class="row">
+        <span class="label">Selected Text</span>
+        <span class="box">
+            <input type="text" name="data" class="datatext" id="datatext">
+            <label for="bid">Select Student Id:</label>
+            <select name="bid" id="bid">
+                <?php
+                    while ($row = mysql_fetch_array($s_result)) {
+                        $title = $row['title'];
+                        $id = $row['book_no'];
+
+                        echo "<option value='$id'>$title</option>";
+                    }
+                    ?>
+            </select>
+        </span>
+    </div>
+    <script>
+        textfield = document.getElementById("datatext");
+        contentselect = document.getElementById("bid");
+
+        contentselect.onchange = function () {
+            var text = contentselect.options[contentselect.selectedIndex].value
+            if (text != "") {
+                textfield.value = text;
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

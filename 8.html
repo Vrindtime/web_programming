@@ -1,0 +1,84 @@
+<html>
+<head>
+  <title>Prime Number</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      place-content: center;
+      height: 100vh;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: #f5f5f5;
+
+    }
+    .container {
+      width: 30vw;
+      height: 20vh;
+      border: 2px solid black;
+      border-radius: 15px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    form{
+      padding: 20%;
+      font-size: 24px;
+    }
+    input{
+      padding: 2%;
+      margin: 2%;
+    }
+    input[type="text"]{
+      font-size: 24px;
+      padding: 2%;
+      margin: 2%;
+    }
+    input[type="submit"]{
+      padding: 5%;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      background-color: black;
+    }
+    p{
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="return false;">
+      <label for="prime">Enter your Number</label>
+      <input type="number" id="prime">
+      <br>
+      <input type="submit" value="Submit" onclick="Prime()">
+    </form>
+  </div>
+  <p id="result"></p>
+  <script>
+    function Prime() {
+      let input = document.getElementById("prime");
+      let num = input.value;
+      let flag = 0 ;
+      if(num%2==0){
+        flag = 1;
+      }
+      else{
+        flag = 0;
+      }
+
+      let resultElement = document.getElementById("result");
+      if(flag == 1){
+        resultElement.textContent = " "+num + " Is a Prime Number";
+      }
+      else{
+        resultElement.textContent = " "+num + " Is not a Prime Number";
+      }   
+    }
+  </script>
+</body>
+</html>

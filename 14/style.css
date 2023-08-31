@@ -1,0 +1,66 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #f5f5f5;
+}
+h1 {
+    font-size: 32px;
+    text-transform: uppercase;
+    text-decoration: underline;
+}
+.container {
+    width: 30vw;
+    height: 80vh;
+    border: 1px solid white;
+    border-radius: 15px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 2px 2px 5px black;
+}
+form {
+    padding: 15%;
+    font-size: 14px;
+}
+input {
+    padding: 2%;
+    margin: 2%;
+}
+input[type="text"],input[type="password"],input[type="number"],input[type="date"] {
+    font-size: 14px;
+    padding: 2%;
+}
+input[type="submit"],input[type="reset"] {
+    font-size: 14px;
+    text-transform: uppercase;
+    padding: 4% 3%;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background-color: black;
+}
+input[type="reset"] {
+    background-color: lightcoral;
+}
+p {
+    font-size: 24px;
+}
+input {
+    padding: 0% 2%;
+}
+.input {
+    display: flex;
+    flex-direction: column;
+}
+.input label {
+    text-align: start;
+    font-size: 18px;
+    font-weight: 600;
+}

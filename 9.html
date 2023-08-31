@@ -1,0 +1,78 @@
+<html>
+<head>
+  <title>vowels in a string</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      place-content: center;
+      height: 100vh;
+      text-align: center;
+      text-transform: uppercase;
+      background-color: #f5f5f5;
+
+    }
+    .container {
+      width: 30vw;
+      height: 20vh;
+      border: 2px solid black;
+      border-radius: 15px;
+      background-color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    form{
+      padding: 20%;
+      font-size: 24px;
+    }
+    input{
+      padding: 2%;
+      margin: 2%;
+    }
+    input[type="text"]{
+      font-size: 24px;
+      padding: 2%;
+      margin: 2%;
+    }
+    input[type="submit"]{
+      padding: 5%;
+      border: none;
+      border-radius: 15px;
+      color: white;
+      background-color: black;
+    }
+    p{
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <form onsubmit="return false;">
+      <label for="string">Enter your String</label>
+      <input type="text" id="string">
+      <br>
+      <input type="submit" value="Submit" onclick="countVowels()">
+    </form>
+  </div>
+  <p id="result"></p>
+  <script>
+    const vowels = ['a', 'e', 'i', 'o', 'u'];
+    function countVowels() {
+      let input = document.getElementById("string");
+      let str = input.value.toLowerCase();
+      let count = 0;
+      for (let i = 0; i < str.length; i++) {
+        if (vowels.includes(str[i])) {
+          count++;
+        }
+      }
+      let resultElement = document.getElementById("result");
+      resultElement.textContent = "Entered value has " + count + " vowels in a string.";
+    }
+  </script>
+</body>
+</html>
